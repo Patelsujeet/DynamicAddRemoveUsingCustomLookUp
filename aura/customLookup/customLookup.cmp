@@ -1,0 +1,123 @@
+<aura:component controller="FieldServiceERNCreation" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global">
+    <!--declare attributes--> 
+    <aura:attribute name="selectedRecord" type="sObject" default="{}" description="Use,for store SELECTED sObject Record"/>
+    <aura:attribute name="listOfSearchRecords" type="List" description="Use,for store the list of search records which returns from apex class"/>
+    <aura:attribute name="SearchKeyWord" type="string"/>
+    
+    <aura:attribute name="IconName" type="string" default=""/>
+    <aura:attribute name="label" type="string" default=""/>
+    <aura:attribute name="Message" type="String" default=""/>
+    
+    <aura:attribute name="index" type="String" default="0"/>
+    <aura:attribute name="currentElementId" type="String" default=""/>
+    
+    <aura:attribute name="ern_Id" type="String" default=""/>
+    <aura:attribute name="selectedAssetName" type="string"/> 
+    
+    <!--declare events hendlers-->  
+    <aura:handler name="oSelectedRecordEvent" event="c:selectedsObjectRecordEvent" action="{!c.handleComponentEvent}"/>
+    
+    
+    <!-- https://www.lightningdesignsystem.com/components/lookups/ --> 
+    
+    <div class="slds-grid slds-gutters">
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-p-left_xx-small slds-size_1-of-5">
+                <span>
+                    <div class="slds-form-element">
+                        <label class="slds-form-element__label" for="combobox-id-1">Asset Name
+                            <lightning:helptext content="Please Enter Shop Order Number, Then Asset Name will be come in drop down"/>
+                        </label>
+                        <div class="slds-form-element__control">
+                            <div class="slds-combobox_container slds-has-inline-listbox">
+                                <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click " aria-expanded="false" aria-haspopup="listbox" role="combobox">
+                                    <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+                                        
+                                        <input type="text" class="slds-input slds-combobox__input slds-combobox__input-value" 
+                                               id="{!v.index}" aria-autocomplete="list" aria-controls="listbox-id-1" autoComplete="off" 
+                                               role="textbox" placeholder="Please Enter Shop Order Number	..."
+                                               onkeyup="{!c.keyPressController}" /> 
+                                        
+                                        <!--<aura:if isTrue="{!or(v.selectedAssetName!=null,v.selectedAssetName=='')}">-->    
+                                        <aura:if isTrue="{!v.selectedAssetName!=null}">
+                                            <span class="slds-pill slds-pill_link fullWidth">
+                                                <a href="javascript:void(0);" class="slds-pill__action slds-p-left_x-small" title="Full pill label verbiage mirrored here">
+                                                    <span class="slds-pill__label slds-p-left_x-small">{!v.selectedAssetName}</span>
+                                                </a>
+                                                <button onclick="{!c.clearSelection}" 
+                                                        class="slds-button slds-button_icon slds-button_icon slds-pill__remove" 
+                                                        title="Remove">
+                                                    <lightning:icon iconName="utility:close" size="small" 
+                                                                    alternativeText="Press delete or backspace to remove"/>
+                                                    <span class="slds-assistive-text">Remove</span>
+                                                </button>
+                                            </span>
+                                        </aura:if>
+                                        
+                                    </div>
+                                    <aura:if isTrue="{!greaterthanorequal(v.listOfSearchRecords.length,1)}">
+                                        <ul class="slds-listbox slds-listbox_vertical slds-dropdown slds-dropdown_length-5 slds-dropdown_fluid" 
+                                            style="display: block; min-width: auto; max-width: 100% ; width: 100%;">
+                                            <aura:iteration items="{!v.listOfSearchRecords}" var="singleRec">
+                                                <c:customLookupResult oRecord="{!singleRec}" IconName="{!v.IconName}"/>
+                                            </aura:iteration>
+                                        </ul>
+                                    </aura:if>  
+                                </div>
+                                
+                            </div>
+                        </div>    
+                    </div>
+                </span>
+            </div>
+            <div class="slds-col slds-p-left_xx-small slds-size_1-of-5">
+                <span class="slds-form-element">
+                    <label class="slds-form-element__label" for="text-input-id-1">Software Version	</label>
+                    <div class="slds-form-element__control">
+                        <input name="software_version" type="phone" maxlength="10" class="slds-input" />
+                    </div>    
+                </span>
+            </div>
+            <div class="slds-col slds-p-left_xx-small slds-size_1-of-5">
+                <span class="slds-form-element">
+                    <label class="slds-form-element__label" for="text-input-id-1">Control Rock</label>
+                    <div class="slds-form-element__control">
+                        <input name="control_rock_detail" type="phone" maxlength="10" class="slds-input" />
+                    </div>    
+                </span>
+            </div>    
+            <div class="slds-col slds-p-left_xx-small slds-size_1-of-5">
+                <span class="slds-form-element">
+                    <label class="slds-form-element__label" for="text-input-id-1">Electrical Circuit</label>
+                    <div class="slds-form-element__control">
+                        <input name="control_rock_detail" type="phone" maxlength="10" class="slds-input" />
+                    </div>    
+                </span>
+            </div>
+            <div class="slds-col slds-p-left_xx-small slds-size_1-of-5">
+                <span class="slds-form-element">
+                    <label class="slds-form-element__label" for="text-input-id-1">Hydraulic Circuit Number</label>
+                    <div class="slds-form-element__control">
+                        <input name="control_rock_detail" type="phone" maxlength="10" class="slds-input" />
+                    </div>    
+                </span>
+            </div>    
+            
+            <div class="slds-col slds-p-left_xx-small slds-size_5-of-5">
+                <span class="slds-form-element">
+                    <label class="slds-form-element__label" for="text-input-id-1">Machine Modifications in Field/Remarks</label>
+                    <div class="slds-form-element__control">
+                        <textarea id="textarea-id-01" style="height: 60px;" class="slds-input slds-textarea" placeholder="Placeholder Text"></textarea>
+                    </div>    
+                </span>
+            </div>
+        </div>
+        <div class="slds-grid">
+            <div style="display:inline-block;margin-right:10px" onclick="{!c.deleteR}">
+             <lightning:icon iconName="action:delete" alternativeText="Approved" />
+            </div>
+        </div>
+    </div>
+    
+    
+</aura:component>

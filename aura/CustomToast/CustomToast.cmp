@@ -1,0 +1,29 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="messageName" type="String"/>
+    <aura:attribute name="toastType" type="String"/>
+    <aura:attribute name="show" type="boolean" default="true"/>
+    <aura:attribute name="toastIcon" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    
+  <aura:if isTrue="{!v.show}">
+    <div class="demo-only" style="height:4rem">
+        <div class="slds-notify_container slds-is-relative">
+            <div class="{!v.toastType}" role="status">
+                    <span class="slds-icon_container slds-icon-utility-success slds-m-right_small slds-no-flex slds-align-top" title="Description of icon when needed">
+                       <lightning:icon iconName="{!v.toastIcon}" class="fill_White_Color" alternativeText="toastIcon" />
+                    </span> 
+                <div class="slds-notify__content">
+                    <h2 class="slds-text-heading_small ">{!v.messageName}
+                        <!--<a href="javascript:void(0);">ACME - 100</a> widgets was created.-->
+                    </h2>
+                </div>
+                <div class="slds-notify__close">
+                   <lightning:buttonIcon iconName="utility:close" class="slds-button slds-button_icon slds-button_icon-inverse" size="large"
+                                         variant="bare" alternativeText="Close" onclick="{! c.handleClick }"/>
+                </div>
+            </div>
+        </div>
+    </div>
+  </aura:if>
+</aura:component>

@@ -1,0 +1,54 @@
+<aura:component >    
+    <!--Attribute for store single ERN Asset object instance-->
+    <aura:attribute name="ERNAssetInstance" type="ERN_Assets__c"/>
+    <!--Attribute for store Index of Particular Instance -->
+    <aura:attribute name="rowIndex" type="String"/>
+     
+    <!-- Register 2 Lightning Event for handle add or Delete rows on Parent Component  -->
+    <!--<aura:registerEvent name="DeleteRowEvent" type="c:DeleteRowEvent"/> -->
+    <!--<aura:registerEvent name="AddRowEvent" type="c:AddRowEvent"/> -->
+      
+    <aura:if isTrue="{!v.rowIndex == 0}">
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    <td>
+            <!-- conditionally Display Add or Delete Icons, if rowIndex is 0 then show add row Icon else show delete Icon-->
+            <lightning:button class="slds-button slds-button_brand" variant="brand" label="Add Row" onclick="{!c.addRow}" />
+                <!--<a onclick="{!c.addRow}">
+                    <lightning:icon iconName="utility:add" class="slds-icon slds-icon_small" size="small" alternativeText="Add"/>
+                    <span class="slds-assistive-text">Add</span>
+                </a>-->     
+            
+        </td> 
+    </tr>
+        </aura:if>
+    <aura:if isTrue="{!v.rowIndex > 0}">
+    <tr class="slds-text-title_caps">
+        <td> 
+            {!v.rowIndex}
+        </td>
+        <td>
+            <force:inputField class="slds-input" value="{!v.ERNAssetInstance.Asset__c}" required = "true" aura:id = "AssetId"/>
+        </td>
+        <td>
+            <lightning:input class="slds-input" type = "Text" name = "Software" value = "{!v.ERNAssetInstance.Software_Version__c}" required = "true" aura:id = "Software"/>
+        </td>
+        <td>
+            <lightning:input class="slds-input" type = "Text" name = "ControlRackDetails" value = "{!v.ERNAssetInstance.Control_Rack_Details__c}" required = "true" aura:id = "ControlRack"/>
+        </td>
+        <td>
+            <lightning:textarea class="slds-input" name="MachineModification/Remarks" placeholder="type here..." value="{!v.ERNAssetInstance.Machine_Modifications_in_Field_Remarks__c}" required = "true" aura:id="MachineModification"/>
+        </td>
+        <td>
+            
+            <a onclick="{!c.deleteRow}">
+                        <lightning:icon variant="error" iconName="utility:delete" class="slds-icon slds-icon_small" size="small" alternativeText="Delete"/>
+                        <span class="slds-assistive-text">Delete</span>
+                    </a>
+            
+        </td>
+    </tr>
+        </aura:if>
+</aura:component>

@@ -1,0 +1,814 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>false</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Assigned_To_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Assigned To Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Assigned_To__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Assigned To</label>
+        <referenceTo>Technical_User__c</referenceTo>
+        <relationshipLabel>ERN Approval</relationshipLabel>
+        <relationshipName>ERN_Approval_Assigned_To</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Comment__c</fullName>
+        <externalId>false</externalId>
+        <label>Comment</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Completed_By__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Completed By</label>
+        <referenceTo>Technical_User__c</referenceTo>
+        <relationshipLabel>ERN Approval (Completed By)</relationshipLabel>
+        <relationshipName>ERN_Approval1</relationshipName>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Department__c</fullName>
+        <description>Department in which ERN Approval is pending.</description>
+        <externalId>false</externalId>
+        <label>Department</label>
+        <length>50</length>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ERN_Development_price__c</fullName>
+        <externalId>false</externalId>
+        <label>ERN Development price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ERN_Material_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>ERN Material Price</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ERN_Price__c</fullName>
+        <externalId>false</externalId>
+        <label>ERN Price</label>
+        <precision>15</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ERN__c</fullName>
+        <externalId>false</externalId>
+        <label>ERN</label>
+        <referenceTo>ERN__c</referenceTo>
+        <relationshipLabel>ERN Approval</relationshipLabel>
+        <relationshipName>ERN_Approval</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Final_Price_Remarks__c</fullName>
+        <description>This is only for CSD Department to track the reason behind ERN FInal Price provided by them.</description>
+        <externalId>false</externalId>
+        <label>Final Price Remarks</label>
+        <length>32768</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Information_Provided__c</fullName>
+        <description>Information Provided by user to design team.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Information Provided by user to design team.</inlineHelpText>
+        <label>Information Provided</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Information_Required__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter Information required from ERN Creator.</inlineHelpText>
+        <label>Information Required</label>
+        <length>1000</length>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Lead_Time_in_Weeks__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>&apos;Engineering Lead Time&apos; Required by Engineering Team for ERN Process.
+&apos;OEC Lead Time&apos; Includes Additional Part Procurement time and Engineering Lead Time.</inlineHelpText>
+        <label>Lead Time (Weeks)</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>0</fullName>
+                    <default>false</default>
+                    <label>0</label>
+                </value>
+                <value>
+                    <fullName>1</fullName>
+                    <default>false</default>
+                    <label>1</label>
+                </value>
+                <value>
+                    <fullName>2</fullName>
+                    <default>false</default>
+                    <label>2</label>
+                </value>
+                <value>
+                    <fullName>3</fullName>
+                    <default>false</default>
+                    <label>3</label>
+                </value>
+                <value>
+                    <fullName>4</fullName>
+                    <default>false</default>
+                    <label>4</label>
+                </value>
+                <value>
+                    <fullName>5</fullName>
+                    <default>false</default>
+                    <label>5</label>
+                </value>
+                <value>
+                    <fullName>6</fullName>
+                    <default>false</default>
+                    <label>6</label>
+                </value>
+                <value>
+                    <fullName>7</fullName>
+                    <default>false</default>
+                    <label>7</label>
+                </value>
+                <value>
+                    <fullName>8</fullName>
+                    <default>false</default>
+                    <label>8</label>
+                </value>
+                <value>
+                    <fullName>9</fullName>
+                    <default>false</default>
+                    <label>9</label>
+                </value>
+                <value>
+                    <fullName>10</fullName>
+                    <default>false</default>
+                    <label>10</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Material_Cost__c</fullName>
+        <externalId>false</externalId>
+        <label>Material Cost</label>
+        <precision>17</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Possibility__c</fullName>
+        <externalId>false</externalId>
+        <label>Possibility</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+                <value>
+                    <fullName>N/A</fullName>
+                    <default>false</default>
+                    <label>N/A</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Required_Engineering_Hours__c</fullName>
+        <externalId>false</externalId>
+        <label>Required Engineering Hours</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Review_Hours__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Time required to Review ERN for Engineering Team.</inlineHelpText>
+        <label>Review Hours</label>
+        <precision>4</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SPE_CSD_Email_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>SPE/CSD Email Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SPE_Email_Id__c</fullName>
+        <externalId>false</externalId>
+        <label>SPE Email Id</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Open</fullName>
+                    <default>false</default>
+                    <label>Open</label>
+                </value>
+                <value>
+                    <fullName>Additional Information Required From Region</fullName>
+                    <default>false</default>
+                    <label>Additional Information Required From Region</label>
+                </value>
+                <value>
+                    <fullName>Application Review Required</fullName>
+                    <default>false</default>
+                    <label>Application Review Required</label>
+                </value>
+                <value>
+                    <fullName>Information Provided</fullName>
+                    <default>false</default>
+                    <label>Information Provided</label>
+                </value>
+                <value>
+                    <fullName>Closed</fullName>
+                    <default>false</default>
+                    <label>Closed</label>
+                </value>
+                <value>
+                    <fullName>Waiting On Information</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Waiting On Information</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Subordinate1_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Subordinate1 Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Subordinate2_Email__c</fullName>
+        <externalId>false</externalId>
+        <label>Subordinate2 Email</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Email</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Validation_Required__c</fullName>
+        <externalId>false</externalId>
+        <label>Validation Required?</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Yes</fullName>
+                    <default>false</default>
+                    <label>Yes</label>
+                </value>
+                <value>
+                    <fullName>No</fullName>
+                    <default>false</default>
+                    <label>No</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <label>ERN Approval</label>
+    <nameField>
+        <label>ERN Approval Name</label>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>ERN Approval</pluralLabel>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Closed_ERN_Approver</fullName>
+        <active>true</active>
+        <label>Closed ERN Approver</label>
+        <picklistValues>
+            <picklist>Lead_Time_in_Weeks__c</picklist>
+            <values>
+                <fullName>0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Possibility__c</picklist>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Additional Information Required From Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Application Review Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Validation_Required__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Open_ERN_Approver</fullName>
+        <active>true</active>
+        <label>Open ERN Approver</label>
+        <picklistValues>
+            <picklist>Lead_Time_in_Weeks__c</picklist>
+            <values>
+                <fullName>0</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>1</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>10</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>2</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>3</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>4</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>5</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>6</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>7</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>8</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>9</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Possibility__c</picklist>
+            <values>
+                <fullName>N%2FA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status__c</picklist>
+            <values>
+                <fullName>Additional Information Required From Region</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Application Review Required</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Closed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Information Provided</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Open</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Validation_Required__c</picklist>
+            <values>
+                <fullName>No</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Can_not_Change_Status_to_Close</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(AND( 
+$Profile.Name &lt;&gt; &quot;India Sales Project Engineer&quot;, 
+$Profile.Name &lt;&gt; &quot;System Administrator&quot;, 
+$Profile.Name &lt;&gt; &quot;FSL System Admin&quot;), 
+NOT((ISPICKVAL($User.Territory__c, &quot;CSD-India&quot;))||(ISPICKVAL($User.Territory__c, &quot;Export-India&quot;))),
+ISCHANGED( Status__c ),
+ISPICKVAL( Status__c , &quot;Closed&quot;))</errorConditionFormula>
+        <errorDisplayField>Status__c</errorDisplayField>
+        <errorMessage>Can not change status to Closed.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>ERN_Price_non_editable</fullName>
+        <active>true</active>
+        <description>This will prompt user to not updated the ERN price directly</description>
+        <errorConditionFormula>AND
+( 
+  CONTAINS(Name,&quot;Costing&quot;),
+  AND
+  (
+   $User.Id = &quot;0050h00000GXxmnAAD&quot;,
+   ISCHANGED( ERN_Price__c )
+   )
+)</errorConditionFormula>
+        <errorDisplayField>ERN_Price__c</errorDisplayField>
+        <errorMessage>You cannot edit this Field.Please contact Administrator</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Information_provided_By_Service_Engineer</fullName>
+        <active>true</active>
+        <description>Information provided field details should be mandatory while select status Information provided by Service engineer.</description>
+        <errorConditionFormula>AND
+(
+  ISPICKVAL(Status__c  , &quot;Information Provided&quot;), 
+  Information_Provided__c=&quot;&quot;
+)</errorConditionFormula>
+        <errorDisplayField>Information_Provided__c</errorDisplayField>
+        <errorMessage>Please Fill Information!!!</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Is_ERN_Drop</fullName>
+        <active>true</active>
+        <errorConditionFormula>ISPICKVAL( ERN__r.Status__c , &apos;Drop&apos;)</errorConditionFormula>
+        <errorMessage>This ERN has been dropped by Owner hence NO Action required.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Comment_on_Close</fullName>
+        <active>true</active>
+        <description>Validate Comment on change status to close</description>
+        <errorConditionFormula>ISCHANGED( Status__c ) &amp;&amp; ISPICKVAL( Status__c , &quot;Closed&quot;) &amp;&amp; ISBLANK( Comment__c ) &amp;&amp;  NOT( ISPICKVAL( Possibility__c, &quot;N/A&quot;) )</errorConditionFormula>
+        <errorDisplayField>Comment__c</errorDisplayField>
+        <errorMessage>You have to enter Comment before close.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Completed_BY</fullName>
+        <active>true</active>
+        <description>Completed by should be of same department.</description>
+        <errorConditionFormula>NOT(ISBLANK( Completed_By__c )) &amp;&amp; TEXT(Completed_By__r.Department__c) &lt;&gt; Department__c</errorConditionFormula>
+        <errorDisplayField>Completed_By__c</errorDisplayField>
+        <errorMessage>Assigned to and Completed by should be of same department.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Completed_By_on_Close</fullName>
+        <active>true</active>
+        <description>Validate Completed By on change status to close</description>
+        <errorConditionFormula>ISCHANGED( Status__c ) &amp;&amp; ISPICKVAL( Status__c , &quot;Closed&quot;) &amp;&amp; ISBLANK(  Completed_By__r.Id )</errorConditionFormula>
+        <errorDisplayField>Completed_By__c</errorDisplayField>
+        <errorMessage>You have to enter Completed By before close.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_ERN_Price_before_Close</fullName>
+        <active>true</active>
+        <description>Validate ERN Price before Close</description>
+        <errorConditionFormula>ISCHANGED(Status__c) &amp;&amp; ISPICKVAL( Status__c , &quot;Closed&quot;) &amp;&amp; ISPICKVAL( Possibility__c , &quot;Yes&quot;) &amp;&amp;  (CONTAINS( Department__c , &quot;Costing&quot;) || CONTAINS( Department__c , &quot;CSD&quot;)) &amp;&amp; ISBLANK( ERN_Price__c )</errorConditionFormula>
+        <errorDisplayField>ERN_Price__c</errorDisplayField>
+        <errorMessage>You have to enter ERN Price before close.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Engineerin_Hours_on_Close</fullName>
+        <active>true</active>
+        <description>Validate Engineering Hours Before Close</description>
+        <errorConditionFormula>ISCHANGED( Status__c ) &amp;&amp; ISPICKVAL( Status__c , &quot;Closed&quot;) &amp;&amp; ISPICKVAL( Possibility__c , &quot;Yes&quot;) &amp;&amp;  ( CONTAINS( Department__c , &quot;Mechanical&quot;) || CONTAINS( Department__c , &quot;Electrical&quot;) || CONTAINS( Department__c , &quot;Software&quot;) || CONTAINS( Department__c , &quot;Hydraulic&quot;) ) &amp;&amp; ISBLANK( Required_Engineering_Hours__c )</errorConditionFormula>
+        <errorDisplayField>Required_Engineering_Hours__c</errorDisplayField>
+        <errorMessage>You have to enter Required Engineering Hours before close.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Information_Requested_Field</fullName>
+        <active>true</active>
+        <description>Validate Information Requested Field for status equals &quot;Additional Information Required From Region&quot; or &quot;Application Review Required&quot;.</description>
+        <errorConditionFormula>(ISPICKVAL( Status__c ,&quot;Additional Information Required From Region&quot;) || ISPICKVAL( Status__c ,&quot;Application Review Required&quot;)) &amp;&amp;  ISBLANK( Information_Required__c )</errorConditionFormula>
+        <errorDisplayField>Information_Required__c</errorDisplayField>
+        <errorMessage>Enter Information Required from ERN Creator/Application Review.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Lead_Time_on_Close</fullName>
+        <active>true</active>
+        <description>Validate Lead Time Before Close</description>
+        <errorConditionFormula>ISCHANGED( Status__c ) &amp;&amp; ISPICKVAL( Status__c , &quot;Closed&quot;) &amp;&amp; ISPICKVAL( Possibility__c , &quot;Yes&quot;) &amp;&amp;  ( CONTAINS( Department__c , &quot;Mechanical&quot;) || CONTAINS( Department__c , &quot;Electrical&quot;) || CONTAINS( Department__c , &quot;Software&quot;) || CONTAINS( Department__c , &quot;Hydraulic&quot;) || CONTAINS( Department__c , &quot;OEC&quot;) ) &amp;&amp; ISBLANK(TEXT( Lead_Time_in_Weeks__c ))</errorConditionFormula>
+        <errorDisplayField>Lead_Time_in_Weeks__c</errorDisplayField>
+        <errorMessage>You have to enter Lead Time before close.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Material_Cost_on_Close</fullName>
+        <active>true</active>
+        <description>Validate Material Cost Before Close</description>
+        <errorConditionFormula>ISCHANGED( Status__c ) &amp;&amp; ISPICKVAL( Status__c , &quot;Closed&quot;) &amp;&amp; ISPICKVAL( Possibility__c , &quot;Yes&quot;) &amp;&amp;  ( CONTAINS( Department__c , &quot;Mechanical&quot;) || CONTAINS( Department__c , &quot;Electrical&quot;) || CONTAINS( Department__c , &quot;Software&quot;) || CONTAINS( Department__c , &quot;Hydraulic&quot;) ) &amp;&amp; ISNULL(  Material_Cost__c)</errorConditionFormula>
+        <errorDisplayField>Material_Cost__c</errorDisplayField>
+        <errorMessage>You have to enter Material Cost before close.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Possibility_on_Close</fullName>
+        <active>true</active>
+        <description>Validate Possibility on Close.</description>
+        <errorConditionFormula>ISCHANGED(Status__c) &amp;&amp; ISPICKVAL( Status__c , &quot;Closed&quot;) &amp;&amp; ISBLANK(TEXT( Possibility__c ))</errorConditionFormula>
+        <errorDisplayField>Possibility__c</errorDisplayField>
+        <errorMessage>You have to enter value in Possibility before close.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Validate_Possibility_on_Close_FOR_OEC</fullName>
+        <active>true</active>
+        <description>Validate Possibility on Close For OEC and Costing.</description>
+        <errorConditionFormula>ISCHANGED(Status__c) &amp;&amp; ISPICKVAL( Status__c , &quot;Closed&quot;) &amp;&amp; ISPICKVAL( Possibility__c, &quot;N/A&quot;) &amp;&amp; ( CONTAINS( Department__c , &quot;OEC&quot;) ||  CONTAINS( Department__c , &quot;Costing&quot;) ||  CONTAINS( Department__c , &quot;SPE&quot;) ||  CONTAINS( Department__c , &quot;CSD&quot;) )</errorConditionFormula>
+        <errorDisplayField>Possibility__c</errorDisplayField>
+        <errorMessage>You can not select N/A in Possibility.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+    <webLinks>
+        <fullName>Change_AssignTo_User</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <linkType>url</linkType>
+        <masterLabel>Change AssignTo User</masterLabel>
+        <openType>replace</openType>
+        <protected>false</protected>
+        <url>/flow/Assign_Technical_User?Id={!ERN_Approval__c.Id}&amp;retURL={!ERN_Approval__c.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Change_Assign_User</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Change Assign User</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>true</requireRowSelection>
+        <url>var selectedERNApp = {!GETRECORDIDS($ObjectType.ERN_Approval__c)}; 
+
+if (selectedERNApp.length != 1) {
+   alert(&quot;You must select only one record.&quot;);
+} else 
+{
+    var serverUrl = &apos;{!$Api.Partner_Server_URL_260}&apos;;
+    var position = {!FIND( &apos;/services&apos;, $Api.Partner_Server_URL_260)};
+    var base = serverUrl.substring(0,position-1);
+
+    var url = base +encodeURI(&apos;/flow/Assign_Technical_User?Id=&apos; + selectedERNApp[0] + &apos;&amp;retURL=&apos;+selectedERNApp[0]);
+
+    window.open(url, &apos;_self&apos;);
+}</url>
+    </webLinks>
+</CustomObject>

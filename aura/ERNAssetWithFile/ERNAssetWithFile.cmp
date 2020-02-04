@@ -1,0 +1,68 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+    <aura:attribute name="ern_asset_List" type="List" default="{Asset__c: '02i0L00000AAECaQAP', ERN__c: 'a542g0000004GhxAAE',Id: 'a7M2g0000008ORpEAM'
+                                                               Software_Version__c: '5896', Control_Rack_Details__c: '9969', Electrical_Circuit__c: '99'}"/>
+    
+    <aura:attribute name="ern_Id" type="String"/>
+    <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+        <div class="slds-modal__container" style="position: relative;top: -100px; width: 1400px;">
+            <header class="slds-modal__header">
+                
+                <h2 id="modal-heading-01" class="slds-modal__title slds-hyphenate">File Attachment</h2>
+                
+            </header>
+            <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Account Name">Account Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Asset Name">Asset Name</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="Shop Order No.">Shop Order No.</div>
+                            </th>
+                            <th class="" scope="col">
+                                <div class="slds-truncate" title="File">File</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <aura:iteration  items="{!v.ern_asset_List}" var="ern_asset">
+                            <tr class="slds-hint-parent">
+                                <td data-label="Account Name">
+                                    <div class="slds-truncate" title="{!ern_asset.Asset__r.Account.Name}">{!ern_asset.Asset__r.Account.Name}</div>
+                                </td>
+                                <td data-label="Asset Name">
+                                    <div class="slds-truncate" title="{!ern_asset.Asset__r.Name}">{!ern_asset.Asset__r.Name}</div>
+                                </td>
+                                <td data-label="Shop Order Number">
+                                    <div class="slds-truncate" title="Cloudhub">{!ern_asset.Asset__r.Sales_Order_Number__c}</div>
+                                </td>
+                                <td data-label="File Upload">
+                                    <div class="slds-truncate" title="fileupload">
+                                        <span><lightning:fileUpload  name="fileUploader"
+                                                                    multiple="false"
+                                                                    accept=".jpg, .pdf"
+                                                                    recordId="{!ern_asset.Id}" 
+                                                                    onuploadfinished="{!c.fileUpload}"/></span>
+                                    </div>
+                                </td>
+                            </tr>                          
+                        </aura:iteration>
+                        
+                        
+                    </tbody>
+                </table>
+            </div>
+            <footer class="slds-modal__footer">
+                <lightning:button class="slds-button slds-button_brand" onclick="{!c.navigateToERN}">Done</lightning:button>
+            </footer>
+        </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+    
+    
+</aura:component>

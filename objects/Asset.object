@@ -1,0 +1,2818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>FSL_Asset1</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override updated by Lightning App Builder during activation.</comment>
+        <content>FSL_Asset1</content>
+        <formFactor>Small</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Global_Layout</fullName>
+        <fields>Name</fields>
+        <fields>AccountId</fields>
+        <fields>Sales_Order_Number__c</fields>
+        <fields>Date_Shipped__c</fields>
+        <fields>Warranty_Labor_Expire__c</fields>
+        <fields>Tonnage_Description__c</fields>
+        <fields>ScrewDiameter__c</fields>
+        <fields>Service_Area_Region__c</fields>
+        <label>Global Layout</label>
+    </compactLayouts>
+    <compactLayouts>
+        <fullName>US_Compact_Layout</fullName>
+        <fields>AccountId</fields>
+        <fields>Sales_Order_Number__c</fields>
+        <fields>Date_Shipped__c</fields>
+        <fields>Product_Name__c</fields>
+        <fields>Warranty_Labor_Expire__c</fields>
+        <fields>Warranty_Parts_Expire__c</fields>
+        <fields>Service_Area_Region__c</fields>
+        <label>US Compact Layout</label>
+    </compactLayouts>
+    <enableFeeds>true</enableFeeds>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>AccountId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Account_Business_Unit_Code__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.Business_Unit_Code__c</formula>
+        <label>Account Business Unit Code</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Account_Currency__c</fullName>
+        <description>Used to populate the currency of the account to the asset level - Loaded through the automated process on a daily basis</description>
+        <externalId>false</externalId>
+        <label>Account Currency</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>USD</fullName>
+                    <default>false</default>
+                    <label>USD</label>
+                </value>
+                <value>
+                    <fullName>EUR</fullName>
+                    <default>false</default>
+                    <label>EUR</label>
+                </value>
+                <value>
+                    <fullName>INR</fullName>
+                    <default>false</default>
+                    <label>INR</label>
+                </value>
+                <value>
+                    <fullName>CNY</fullName>
+                    <default>false</default>
+                    <label>CNY</label>
+                </value>
+                <value>
+                    <fullName>JPY</fullName>
+                    <default>false</default>
+                    <label>JPY</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Additional_Products__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>This is for products that are not currently in the Product Catalog.</inlineHelpText>
+        <label>Additional Products</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Age_of_Equipment__c</fullName>
+        <externalId>false</externalId>
+        <formula>TODAY() - Date_Shipped__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <inlineHelpText>Actual number of days since Date Shipped.</inlineHelpText>
+        <label>Age of Equipment</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alive__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>A once every 24 hours indication that the device is working</inlineHelpText>
+        <label>Alive</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>AssetLevel</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>AssetProvidedById</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>AssetServicedById</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Asset_18_Char_ID__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASESAFEID(Id)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Asset 18 Char ID</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Back_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Back Order</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>false</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>No Technician</fullName>
+                    <default>false</default>
+                    <label>No Technician</label>
+                </value>
+                <value>
+                    <fullName>Case &amp; WO Created</fullName>
+                    <default>false</default>
+                    <label>Case &amp; WO Created</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Battery_Low__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The voltage provided by the battery in an Asset Tracking device has fallen below 5% of its original charge.</inlineHelpText>
+        <label>Battery Low</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Battery_OK__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The voltage provided by the battery in an Asset Tracking device has been restored to at least 50% of its original charge.</inlineHelpText>
+        <label>Battery OK</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Begin_Speeding__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The speed is &gt;= the speed threshold for the configured time interval. Default = 65 mph for 30 seconds.</inlineHelpText>
+        <label>Begin Speeding</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Bill_City__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c), Account.BillingCity, ERP_Account__r.Billing_City__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Bill To City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bill_Country__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.BillingCountry, ERP_Account__r.Billing_Country__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Bill To Country</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bill_Street__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.BillingStreet</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Bill to Street</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Bill_Zip__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.BillingPostalCode, ERP_Account__r.Billing_Zip__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Bill To Zip</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billing_State__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.BillingState, ERP_Account__r.Billing_State__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Bill To State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Billto__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.Billto__c, ERP_Account__r.BillTo__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Billto</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Business_Group__c</fullName>
+        <description>Milacron Business Group / Machinery Type</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Milacron Business Group / Machinery Type</inlineHelpText>
+        <label>Business Group</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>EXTRUSION</fullName>
+                    <default>false</default>
+                    <label>EXTRUSION</label>
+                </value>
+                <value>
+                    <fullName>FERROMATIK</fullName>
+                    <default>false</default>
+                    <label>FERROMATIK</label>
+                </value>
+                <value>
+                    <fullName>INJECTION</fullName>
+                    <default>false</default>
+                    <label>INJECTION</label>
+                </value>
+                <value>
+                    <fullName>SEB AUXILIARY</fullName>
+                    <default>false</default>
+                    <label>SEB AUXILIARY</label>
+                </value>
+                <value>
+                    <fullName>SEB MACHINERY</fullName>
+                    <default>false</default>
+                    <label>SEB MACHINERY</label>
+                </value>
+                <value>
+                    <fullName>UNILOY</fullName>
+                    <default>false</default>
+                    <label>UNILOY</label>
+                </value>
+                <value>
+                    <fullName>UNKNOWN</fullName>
+                    <default>false</default>
+                    <label>UNKNOWN</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Case_Created_for_CCV__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Create CCV  Case</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Comm_Down__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Wireless modem lost its data connection</inlineHelpText>
+        <label>Comm Down</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Comm_Up__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Wireless modem is connected to the data network</inlineHelpText>
+        <label>Comm Up</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>ContactId</fullName>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Contact.Account.Id</field>
+                <operation>equals</operation>
+                <valueField>$Source.AccountId</valueField>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Control_Fanuc_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Control/Fanuc Number</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Control_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Control Type</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Counter__c</fullName>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Counter</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Credit_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.Credit_Status__c</formula>
+        <label>Credit Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>CurrencyIsoCode</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Customer_Machine_Alias__c</fullName>
+        <description>This is how the customer refers to this machine, e.g. &quot;Press 7&quot; or &quot;The Red One&quot;. It is not the actual Serial Number.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>This is how the customer refers to this machine, e.g. &quot;Press 7&quot; or &quot;The Red One&quot;. It is not the actual Serial Number.</inlineHelpText>
+        <label>Customer Machine Alias</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_Shipped__c</fullName>
+        <description>Date on which this product was shipped to the customer originally</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Date on which this product was shipped to the customer originally</inlineHelpText>
+        <label>Date Shipped</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Description</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Device_ID__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Also known as ESN number.</inlineHelpText>
+        <label>Device ID</label>
+        <length>25</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>DigitalAssetStatus</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Driver_Reporting_Order__c</fullName>
+        <externalId>false</externalId>
+        <label>Driver Reporting Order</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Driver__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Driver</label>
+        <referenceTo>User</referenceTo>
+        <relationshipLabel>Assets</relationshipLabel>
+        <relationshipName>Assets</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ERP_Account__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>ERP Account</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>$Source.AccountId</field>
+                <operation>equals</operation>
+                <valueField>ERP_Accounts__c.Salesforce_Account__r.Id</valueField>
+            </filterItems>
+            <filterItems>
+                <field>ERP_Accounts__c.Address_Type__c</field>
+                <operation>equals</operation>
+                <value>CS,CX</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
+        <referenceTo>ERP_Accounts__c</referenceTo>
+        <relationshipLabel>Assets</relationshipLabel>
+        <relationshipName>Assets</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ESN__c</fullName>
+        <externalId>false</externalId>
+        <label>ESN</label>
+        <length>30</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>EXTERNAL_ID__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <description>Installed Product External ID</description>
+        <externalId>true</externalId>
+        <inlineHelpText>The External ID must be the same as the Installed Product ID.  For machines and auxiliary equipment use the equipment serial number.  For retrofits to existing machinery use the E1 Lot Serial Number.</inlineHelpText>
+        <label>EXTERNAL ID</label>
+        <length>255</length>
+        <required>true</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>End_Speeding__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>The speed is &lt; the speed threshold. Max speed attained and duration of speeding interval are also included.</inlineHelpText>
+        <label>End Speeding</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Engine_Hours__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <label>Engine Hours</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Family_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Family Code</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Family_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Family Description</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>First_Time_Power_On__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Asset tracker battery has powered on; this only happens the first time it is powered on</inlineHelpText>
+        <label>First Time Power On</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Frame_Size__c</fullName>
+        <externalId>false</externalId>
+        <label>Frame Size</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GPS_Acquired__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>GPS receiver acquired a fix</inlineHelpText>
+        <label>GPS Acquired</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>GPS_IMEI__c</fullName>
+        <externalId>false</externalId>
+        <label>GPS IMEI #</label>
+        <length>255</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GPS_Install_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>GPS Install Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>DateTime</type>
+    </fields>
+    <fields>
+        <fullName>GPS_Install_Odometer_Value__c</fullName>
+        <externalId>false</externalId>
+        <label>GPS Install Odometer Value</label>
+        <precision>8</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GPS_Lost__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>GPS receiver has lost its fix</inlineHelpText>
+        <label>GPS Lost</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Hard_Braking__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Excessive deceleration</inlineHelpText>
+        <label>Hard Braking</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Ignition_Off__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Asset ignition is turned off</inlineHelpText>
+        <label>Ignition Off</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Ignition_On__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Asset ignition is turned on</inlineHelpText>
+        <label>Ignition On</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>In_Motion__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Asset tracker message, asset is in motion</inlineHelpText>
+        <label>In Motion</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>India_Business_Group__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Family_Code__c == &quot;BLOW&quot; &amp;&amp;  Account_Business_Unit_Code__c == &quot;300&quot;,&quot;Blow-Molding&quot;,
+IF(Family_Code__c == &quot;EXT&quot; &amp;&amp;  Account_Business_Unit_Code__c == &quot;300&quot;,&quot;Extrusion&quot;,
+IF(Account_Business_Unit_Code__c == &quot;300&quot;, CASE(Service_Area_Region__c, &quot;Ahmedabad&quot;, &quot;Domestic&quot;, 
+&quot;Kolkata&quot;,&quot;Domestic&quot;,
+&quot;Chandigarh&quot;,&quot;Domestic&quot;,
+&quot;Delhi&quot;,&quot;Domestic&quot;, 
+&quot;Hyderabad&quot;,&quot;Domestic&quot;,
+&quot;Bengaluru&quot;,&quot;Domestic&quot;,
+&quot;Chennai&quot;,&quot;Domestic&quot;,
+&quot;Mumbai&quot;,&quot;Domestic&quot;,
+&quot;Pune&quot;,&quot;Domestic&quot;,
+&quot;Vapi&quot;,&quot;Domestic&quot;,
+&quot;Haridwar&quot;,&quot;Domestic&quot;,
+&quot;Export-India&quot;,&quot;Export&quot;,
+&quot;&quot;),&quot;&quot;)))</formula>
+        <label>India Business Group</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>InstallDate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Installation_Notes__c</fullName>
+        <description>Any technical information relevant for the service organization. This is normally supplied by field service engineers upon completion of installation</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Any technical information relevant for the service organization. This is normally supplied by field service engineers upon completion of installation</inlineHelpText>
+        <label>Installation Notes</label>
+        <length>32000</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>5</visibleLines>
+    </fields>
+    <fields>
+        <fullName>IoT_Device__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>IoT Device</label>
+        <referenceTo>malive__IoTDevice__c</referenceTo>
+        <relationshipLabel>Assets</relationshipLabel>
+        <relationshipName>Assets</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>IsCompetitorProduct</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>IsInternal</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Last_Date_Shipped__c</fullName>
+        <description>If this product was shipped multiple times, date of the most recent shipment. Multiple shipments are possible if the product is returned for depot repair or service</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If this product was shipped multiple times, date of the most recent shipment. Multiple shipments are possible if the product is returned for depot repair or service</inlineHelpText>
+        <label>Last Date Shipped</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Last_Odometer_Reading__c</fullName>
+        <externalId>false</externalId>
+        <label>Last Odometer Reading</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Legacy_ServiceMax_External_Id__c</fullName>
+        <caseSensitive>false</caseSensitive>
+        <externalId>true</externalId>
+        <label>Legacy ServiceMax External Id</label>
+        <length>20</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>true</unique>
+    </fields>
+    <fields>
+        <fullName>LocationId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Location_Update__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Report on location of asset if no other events have occurred; happens every 2 minutes/15 degree turn</inlineHelpText>
+        <label>Location Update</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Machine_Model__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF( NOT( ISBLANK(Tonnage_Description__c)),Tonnage_Description__c, Product2.Product_Model_Description__c)</formula>
+        <label>Machine Model</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Manufacturing_Process__c</fullName>
+        <externalId>false</externalId>
+        <label>Manufacturing Process</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Plan</fullName>
+                    <default>true</default>
+                    <label>Plan</label>
+                </value>
+                <value>
+                    <fullName>F Plan</fullName>
+                    <default>false</default>
+                    <label>F Plan</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>MaxSpeedThreshold__c</fullName>
+        <externalId>false</externalId>
+        <label>Max Speed Threshold</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Milage__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Miles traveled</inlineHelpText>
+        <label>Milage</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Model_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Model Code</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Model_Description__c</fullName>
+        <externalId>false</externalId>
+        <formula>Product2.Name</formula>
+        <label>Model Description</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Model_Descriptions__c</fullName>
+        <externalId>false</externalId>
+        <label>Model Descriptions</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Moving__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Asset is moving, &gt;=5MPH for 10 seconds</inlineHelpText>
+        <label>Moving</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Name</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>NextOilChangeDue__c</fullName>
+        <externalId>false</externalId>
+        <label>Next Oil Change Due</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>No_Event_Location_Update__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Asset tracker message, report on location of asset if no other events have occurred</inlineHelpText>
+        <label>No Event Location Update</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Notes__c</fullName>
+        <externalId>false</externalId>
+        <label>Notes</label>
+        <length>2400</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Number_Of_CCV_Case__c</fullName>
+        <defaultValue>0</defaultValue>
+        <externalId>false</externalId>
+        <label>Number Of CCV Case</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>OEM__c</fullName>
+        <description>Original Equipment Manufacturer of Non-Milacron Machines.</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Original Equipment Manufacturer of Non-Milacron Machines.</inlineHelpText>
+        <label>OEM</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>true</sorted>
+                <value>
+                    <fullName>AMUT</fullName>
+                    <default>false</default>
+                    <label>AMUT</label>
+                </value>
+                <value>
+                    <fullName>ARBURG</fullName>
+                    <default>false</default>
+                    <label>ARBURG</label>
+                </value>
+                <value>
+                    <fullName>AUTOJECTORS</fullName>
+                    <default>false</default>
+                    <label>AUTOJECTORS</label>
+                </value>
+                <value>
+                    <fullName>AUTOMATED ASSEMBLIES</fullName>
+                    <default>false</default>
+                    <label>AUTOMATED ASSEMBLIES</label>
+                </value>
+                <value>
+                    <fullName>BATTENFELD</fullName>
+                    <default>false</default>
+                    <label>BATTENFELD</label>
+                </value>
+                <value>
+                    <fullName>BUCHER</fullName>
+                    <default>false</default>
+                    <label>BUCHER</label>
+                </value>
+                <value>
+                    <fullName>DAVIS STANDARD</fullName>
+                    <default>false</default>
+                    <label>DAVIS STANDARD</label>
+                </value>
+                <value>
+                    <fullName>DEMAG</fullName>
+                    <default>false</default>
+                    <label>DEMAG</label>
+                </value>
+                <value>
+                    <fullName>ENGEL</fullName>
+                    <default>false</default>
+                    <label>ENGEL</label>
+                </value>
+                <value>
+                    <fullName>FANUC</fullName>
+                    <default>false</default>
+                    <label>FANUC</label>
+                </value>
+                <value>
+                    <fullName>FARREL</fullName>
+                    <default>false</default>
+                    <label>FARREL</label>
+                </value>
+                <value>
+                    <fullName>FERROMATIK</fullName>
+                    <default>false</default>
+                    <label>FERROMATIK</label>
+                </value>
+                <value>
+                    <fullName>HISHIYA</fullName>
+                    <default>false</default>
+                    <label>HISHIYA</label>
+                </value>
+                <value>
+                    <fullName>HPM</fullName>
+                    <default>false</default>
+                    <label>HPM</label>
+                </value>
+                <value>
+                    <fullName>HUSKY</fullName>
+                    <default>false</default>
+                    <label>HUSKY</label>
+                </value>
+                <value>
+                    <fullName>INGERSOLL-RAND</fullName>
+                    <default>false</default>
+                    <label>INGERSOLL-RAND</label>
+                </value>
+                <value>
+                    <fullName>JSW</fullName>
+                    <default>false</default>
+                    <label>JSW</label>
+                </value>
+                <value>
+                    <fullName>KLOCHNER WINDSOR</fullName>
+                    <default>false</default>
+                    <label>KLOCHNER WINDSOR</label>
+                </value>
+                <value>
+                    <fullName>KRAUSS-MAFFEI</fullName>
+                    <default>false</default>
+                    <label>KRAUSS-MAFFEI</label>
+                </value>
+                <value>
+                    <fullName>KRUPP</fullName>
+                    <default>false</default>
+                    <label>KRUPP</label>
+                </value>
+                <value>
+                    <fullName>LAWTON MOLDING MACHINE</fullName>
+                    <default>false</default>
+                    <label>LAWTON MOLDING MACHINE</label>
+                </value>
+                <value>
+                    <fullName>MEIKI</fullName>
+                    <default>false</default>
+                    <label>MEIKI</label>
+                </value>
+                <value>
+                    <fullName>NATCO</fullName>
+                    <default>false</default>
+                    <label>NATCO</label>
+                </value>
+                <value>
+                    <fullName>NESTAL</fullName>
+                    <default>false</default>
+                    <label>NESTAL</label>
+                </value>
+                <value>
+                    <fullName>NEWBURY</fullName>
+                    <default>false</default>
+                    <label>NEWBURY</label>
+                </value>
+                <value>
+                    <fullName>NISSEI</fullName>
+                    <default>false</default>
+                    <label>NISSEI</label>
+                </value>
+                <value>
+                    <fullName>NISSIN</fullName>
+                    <default>false</default>
+                    <label>NISSIN</label>
+                </value>
+                <value>
+                    <fullName>NOKIA-MAILLEFER</fullName>
+                    <default>false</default>
+                    <label>NOKIA-MAILLEFER</label>
+                </value>
+                <value>
+                    <fullName>RAINVILLE</fullName>
+                    <default>false</default>
+                    <label>RAINVILLE</label>
+                </value>
+                <value>
+                    <fullName>REED</fullName>
+                    <default>false</default>
+                    <label>REED</label>
+                </value>
+                <value>
+                    <fullName>ROCHESTER 500 TON</fullName>
+                    <default>false</default>
+                    <label>ROCHESTER 500 TON</label>
+                </value>
+                <value>
+                    <fullName>SANDRETTO</fullName>
+                    <default>false</default>
+                    <label>SANDRETTO</label>
+                </value>
+                <value>
+                    <fullName>SANO</fullName>
+                    <default>false</default>
+                    <label>SANO</label>
+                </value>
+                <value>
+                    <fullName>STOKES</fullName>
+                    <default>false</default>
+                    <label>STOKES</label>
+                </value>
+                <value>
+                    <fullName>TOSHIBA</fullName>
+                    <default>false</default>
+                    <label>TOSHIBA</label>
+                </value>
+                <value>
+                    <fullName>UBE</fullName>
+                    <default>false</default>
+                    <label>UBE</label>
+                </value>
+                <value>
+                    <fullName>UNKNOWN</fullName>
+                    <default>false</default>
+                    <label>UNKNOWN</label>
+                </value>
+                <value>
+                    <fullName>VAN DORN</fullName>
+                    <default>false</default>
+                    <label>VAN DORN</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Odometer__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Vehicle odometer value</inlineHelpText>
+        <label>Odometer</label>
+        <precision>6</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Open_Amount__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.Open_Amount__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Open Amount</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>ParentId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Power_On__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Device has powered on</inlineHelpText>
+        <label>Power On</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Price</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Product2Id</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>ProductCode</fullName>
+    </fields>
+    <fields>
+        <fullName>ProductDescription</fullName>
+    </fields>
+    <fields>
+        <fullName>ProductFamily</fullName>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Product_Name__c</fullName>
+        <description>Name of the product associated with the Installed Product</description>
+        <externalId>false</externalId>
+        <formula>Product2.Name</formula>
+        <inlineHelpText>Name of the product associated with the Installed Product</inlineHelpText>
+        <label>Product Name</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>PurchaseDate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Quantity</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Quick_Acceleration__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Excessive acceleration</inlineHelpText>
+        <label>Quick Acceleration</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>RootAssetId</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Sales_Order_Number__c</fullName>
+        <externalId>false</externalId>
+        <label>Sales Order Number</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Scheduled_Ship_Date__c</fullName>
+        <description>Scheduled ship date of machine orders.  Currently based on dates from Night Notes.</description>
+        <externalId>false</externalId>
+        <label>Scheduled Ship Date</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>ScrewDiameter__c</fullName>
+        <externalId>false</externalId>
+        <label>Screw Diameter</label>
+        <length>150</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SerialNumber</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Series__c</fullName>
+        <externalId>false</externalId>
+        <label>Series</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Area_Region__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Account.Service_Region__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Service Area/Region</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Region__c</fullName>
+        <description>Service Area / Region identified on the Account</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Service Area / Region identified on the Account</inlineHelpText>
+        <label>Service Region</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShipToCity__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.ShippingCity, ERP_Account__r.Shipping_City__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ship To City</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShipToCountry__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.ShippingCountry, ERP_Account__r.Shipping_Country__c)</formula>
+        <label>ShipTo Country</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShipToState__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.ShippingState, ERP_Account__r.Shipping_State__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ship To State</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShipToStreet__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.ShippingStreet</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ship to Street</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShipToZip__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.ShippingPostalCode, ERP_Account__r.Shipping_Postal_Code__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ship To Zip</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShipTo_Account__c</fullName>
+        <externalId>false</externalId>
+        <formula>Account.Name</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>ShipTo Account</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shipto__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(ISNULL(ERP_Account__c),Account.Soldto__c, ERP_Account__r.ShipTo__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Shipto</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Shipto_del__c</fullName>
+        <externalId>false</externalId>
+        <label>Ref Shipto#</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>ShotSize__c</fullName>
+        <externalId>false</externalId>
+        <label>Shot Size</label>
+        <length>50</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Special_Warranty_Terms__c</fullName>
+        <externalId>false</externalId>
+        <label>Special Warranty Terms</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Speed__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>GPS speed</inlineHelpText>
+        <label>Speed</label>
+        <precision>3</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Start_Moving__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <label>Start Moving</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Status</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>StockKeepingUnit</fullName>
+    </fields>
+    <fields>
+        <fullName>Stop_Moving__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <label>Stop Moving</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Stop__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Register a stop  when vehicle ignition is turned off for time period</inlineHelpText>
+        <label>Stop</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Stopped__c</fullName>
+        <description>Service Vehicle Event-Attribute Tracking</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Asset is stopped, &lt;5MPH for 120 seconds</inlineHelpText>
+        <label>Stopped</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Today__c</fullName>
+        <externalId>false</externalId>
+        <formula>TODAY()</formula>
+        <label>Today</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Tonnage_Code__c</fullName>
+        <externalId>false</externalId>
+        <label>Tonnage Code</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Tonnage_Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Tonnage Description</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Unique_Installed_Product__c</fullName>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Unique Installed Product</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>UsageEndDate</fullName>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+    </fields>
+    <fields>
+        <fullName>Version__c</fullName>
+        <externalId>false</externalId>
+        <label>Version</label>
+        <length>40</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Warranty_Labor_Expire__c</fullName>
+        <externalId>false</externalId>
+        <label>Warranty Labor Expire</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Warranty_Option__c</fullName>
+        <description>This is the option code for the Sales Order</description>
+        <externalId>false</externalId>
+        <label>Warranty Option</label>
+        <length>100</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Warranty_Parts_Expire__c</fullName>
+        <externalId>false</externalId>
+        <label>Warranty Parts Expire</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Warranty_Start__c</fullName>
+        <externalId>false</externalId>
+        <label>Warranty Start</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Warranty_Status__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(Warranty_Labor_Expire__c &gt;=  TODAY(), &quot;In Warranty&quot;,&quot;Out of Warranty&quot;)</formula>
+        <label>Warranty Status</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <listViews>
+        <fullName>All1</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>ASSET.SERIAL_NUMBER</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>CONTACT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>ASSET.RECORDTYPE</columns>
+        <columns>Date_Shipped__c</columns>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+        <sharedTo>
+            <role>Americas_Extrusion_NA_East_Sales_Eng</role>
+            <role>Americas_Extrusion_NA_East_Sales_Leader</role>
+            <role>Americas_Extrusion_NA_West_Sales_Eng</role>
+            <role>Americas_Extrusion_NA_West_Sales_Leader</role>
+            <role>Americas_Extrusion_Sales_Leader</role>
+            <role>Americas_Injection_General_Mgr</role>
+            <role>Americas_Injection_LA_Direct_Service_Technician</role>
+            <role>Americas_Injection_LA_Independent_Service_Provider</role>
+            <role>Americas_Injection_LA_Regional_Service_Manager</role>
+            <role>Americas_Injection_LA_Sales_Eng</role>
+            <role>Americas_Injection_LA_Sales_Leader</role>
+            <role>Americas_Injection_NA_Direct_Service_Technician</role>
+            <role>Americas_Injection_NA_Eastern_Aftermarket_Sales_Eng</role>
+            <role>Americas_Injection_NA_Eastern_Sales_Eng</role>
+            <role>Americas_Injection_NA_Eastern_Sales_Leader</role>
+            <role>Americas_Injection_NA_Independent_Service_Provider</role>
+            <role>Americas_Injection_NA_Mid_West_Aftermarket_Sales_Eng</role>
+            <role>Americas_Injection_NA_Mid_West_Sales_Eng</role>
+            <role>Americas_Injection_NA_Mid_West_Sales_Leader</role>
+            <role>Americas_Injection_NA_Northeastern_Aftermarket_Sales_Eng</role>
+            <role>Americas_Injection_NA_Northeastern_Sales_Eng</role>
+            <role>Americas_Injection_NA_Northeastern_Sales_Leader</role>
+            <role>Americas_Injection_NA_Regional_Service_Manager</role>
+            <role>Americas_Injection_NA_Western_Aftermarket_Sales_Eng</role>
+            <role>Americas_Injection_NA_Western_Sales_Eng</role>
+            <role>Americas_Injection_NA_Western_Sales_Leader</role>
+            <role>Americas_Injection_Sales_Leader</role>
+            <role>Americas_Injection_Service_Leader</role>
+            <role>Americas_Injection_Support</role>
+            <role>Americas_Systems_Sales_Engineer</role>
+            <role>Americas_Systems_Sales_Leader</role>
+            <role>Americas_US_Aftermarket_Sales_Leader</role>
+            <role>Asia_Systems_Sales_Leader</role>
+            <role>Asian_Blow_Molding_Sales_Eng</role>
+            <role>Asian_Blow_Molding_Sales_Leader</role>
+            <role>Brazil_Sales_Engineer</role>
+            <role>Brazil_Senior_Sales_Leader</role>
+            <role>China_Injection_General_Mgr</role>
+            <role>China_Injection_North_Sales_Eng</role>
+            <role>China_Injection_North_Sales_Leader</role>
+            <role>China_Injection_Sales_Leader</role>
+            <role>China_Injection_South_Sales_Eng</role>
+            <role>China_Injection_South_Sales_Leader</role>
+            <role>China_Injection_Support</role>
+            <role>China_Injection_West_Sales_Eng</role>
+            <role>China_Injection_West_Sales_Leader</role>
+            <role>Europe_Blow_Molding_Sales_Leader</role>
+            <role>Europe_Injection_France_Sales_Leader</role>
+            <role>Europe_Injection_General_Mgr</role>
+            <role>Europe_Injection_German_Sales_Leader</role>
+            <role>Europe_Injection_Italy_Malta_Sales_Eng</role>
+            <role>Europe_Injection_Italy_Malta_Sales_Leader</role>
+            <role>Europe_Injection_ROW_Sales_Eng</role>
+            <role>Europe_Injection_ROW_Sales_Leader</role>
+            <role>Europe_Injection_Sales_Leader</role>
+            <role>Europe_Injection_Spain_Sales_Leader</role>
+            <role>Europe_Injection_Support</role>
+            <role>Europe_Systems_Sales_Leader</role>
+            <role>European_Injection_France_Sales_Eng</role>
+            <role>European_Injection_German_Sales_Eng</role>
+            <role>Extrusion_CanGen_Sales_Leader</role>
+            <role>Extrusion_Canterbury_Sales_Engineer</role>
+            <role>Extrusion_Canterbury_Sales_Leader</role>
+            <role>Extrusion_Genca_Sales_Engineer</role>
+            <role>Extrusion_Genca_Sales_Leader</role>
+            <role>Germany_Blow_Molding_Sales_Eng</role>
+            <role>Global_APPT</role>
+            <role>Global_Blow_Molding</role>
+            <role>Global_Blow_Molding_General_Mgr</role>
+            <role>Global_Blow_Molding_Sales_Leader</role>
+            <role>Global_Blow_Molding_Service_Leader</role>
+            <role>Global_Blow_Molding_Support</role>
+            <role>Global_Extrusion</role>
+            <role>Global_Extrusion_General_Manager</role>
+            <role>Global_Extrusion_Support</role>
+            <role>Global_Injection</role>
+            <role>Global_Systems</role>
+            <role>Global_Systems_General_Manager</role>
+            <role>Global_Systems_Sales_Leader</role>
+            <role>Global_Systems_Support</role>
+            <role>International_Extrusion_European_Sales_Eng</role>
+            <role>International_Extrusion_Platform_Emerging_Markets_Sales_Leader</role>
+            <role>International_Extrusion_Platform_LA_Sales_Eng</role>
+            <role>International_Extrusion_Sales_Leader</role>
+            <role>Italy_Blow_Molding_Service_Manager</role>
+            <role>Italy_Blow_Molding_Service_Technician</role>
+            <role>LA_Blow_Molding_AM_Sales_Eng</role>
+            <role>Latin_America_Blow_Molding_Sales_Leader</role>
+            <role>Middle_East_Injection_Sales_Leader</role>
+            <role>NA_Blow_Molding_AM_US_Sales_Eng</role>
+            <role>NA_Blow_Molding_Service_Manager</role>
+            <role>NA_Blow_Molding_Service_Technician</role>
+            <role>NA_Blow_Molding_W_US_Sales_Eng</role>
+            <role>North_America_Blow_Molding_Sales_Leader</role>
+            <role>UK_Blow_Molding_Service_Manager</role>
+            <role>UK_Blow_Molding_Service_Technician</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Brazil_Assets</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Business_Group__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Brazil</value>
+        </filters>
+        <label>Brazil Assets</label>
+    </listViews>
+    <listViews>
+        <fullName>FMI_Ahmedabad</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>ASSET.STATUS</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Back_Order__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Ahmedabad</value>
+        </filters>
+        <label>FMI_Ahmedabad</label>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_Ahmedabad</role>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_Central_Ah_Bad</role>
+            <role>India_Injection_Service_Technician_Central_Ah_Bad</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_CSD_Export</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Export-India</value>
+        </filters>
+        <label>FMI_Export</label>
+        <sharedTo>
+            <group>India_Export_Team</group>
+            <role>India_Injection_Export_Sales_Eng</role>
+            <role>India_Injection_Export_Sales_Leader</role>
+            <role>India_Injection_General_Mgr</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_CSD_Export_1</role>
+            <role>India_Injection_Service_Leader_CSD_Export_2</role>
+            <role>India_Injection_Service_Technician_CSD</role>
+            <role>India_Injection_Service_Technician_CSD_Export_1</role>
+            <role>India_Injection_Service_Technician_CSD_Export_2</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_Chandigarh</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Chandigarh</value>
+        </filters>
+        <label>FMI_Chandigarh</label>
+        <language>en_US</language>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_Chandigarh</role>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_North</role>
+            <role>India_Injection_Service_Technician_North</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_Chennai</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Back_Order__c</columns>
+        <columns>Service_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>South-Chennai</value>
+        </filters>
+        <label>FMI_Chennai</label>
+        <language>en_US</language>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_Tamilanadu</role>
+            <role>India_Injection_General_Mgr</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_South_Chennai</role>
+            <role>India_Injection_Service_Technician_South_Chennai</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_Delhi</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Delhi</value>
+        </filters>
+        <label>FMI_Delhi</label>
+        <language>en_US</language>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_New_Delhi</role>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_North_West</role>
+            <role>India_Injection_Service_Technician_North_West</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_East_Kolkata</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Code__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Kolkata</value>
+        </filters>
+        <label>FMI_Kolkata</label>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_Gujarat</role>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_East_Kolkata</role>
+            <role>India_Injection_Service_Technician_CSD</role>
+            <role>India_Injection_Service_Technician_East_Kolkata</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_Haridwar</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Back_Order__c</columns>
+        <columns>Service_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Haridwar</value>
+        </filters>
+        <label>FMI_Haridwar</label>
+        <language>en_US</language>
+        <sharedTo>
+            <role>India_Injection_General_Mgr</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_Haridwar</role>
+            <role>India_Injection_Service_Technician_Haridwar</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_Hyderabad</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Back_Order__c</columns>
+        <columns>Service_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>South Central-Hyd</value>
+        </filters>
+        <label>FMI_Hyderabad</label>
+        <language>en_US</language>
+        <sharedTo>
+            <group>Hyderabad_India</group>
+            <role>India_Injection_Domestic_Sales_Eng_Hydrabad</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_South_Central_Hyd</role>
+            <role>India_Injection_Service_Technician_CSD</role>
+            <role>India_Injection_Service_Technician_South_Central_Hyd</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_South_Bangalore</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Bengaluru</value>
+        </filters>
+        <label>FMI_Bengaluru</label>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_Vijaynagar</role>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_South_Bangalore</role>
+            <role>India_Injection_Service_Technician_South_Bangalore</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_West_Mumbai</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Mumbai</value>
+        </filters>
+        <label>FMI_Mumbai</label>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_Mumbai</role>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_West_Mumbai</role>
+            <role>India_Injection_Service_Technician_West_Mumbai</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_West_Pune</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Pune</value>
+        </filters>
+        <label>FMI_Pune</label>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_Pune</role>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_West_Pune</role>
+            <role>India_Injection_Service_Technician_West_Pune</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>FMI_West_Vapi</fullName>
+        <columns>ASSET.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Tonnage_Code__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Date_Shipped__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>ASSET.STATUS</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Vapi</value>
+        </filters>
+        <label>FMI_Vapi</label>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Eng_Mumbai</role>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+            <role>India_Injection_Service_Leader_West_Vapi</role>
+            <role>India_Injection_Service_Technician_West_Vapi</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>Haridwar_In_warranty_Assets</fullName>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>ASSET.SERIAL_NUMBER</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Warranty_Start__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>Warranty_Status__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>Service_Area_Region__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Account_Business_Unit_Code__c</field>
+            <operation>equals</operation>
+            <value>300</value>
+        </filters>
+        <filters>
+            <field>Service_Area_Region__c</field>
+            <operation>equals</operation>
+            <value>Haridwar</value>
+        </filters>
+        <filters>
+            <field>Warranty_Status__c</field>
+            <operation>equals</operation>
+            <value>In Warranty</value>
+        </filters>
+        <label>Haridwar In warranty Assets</label>
+        <language>en_US</language>
+        <sharedTo>
+            <role>India_Injection_Service_Leader_Haridwar</role>
+            <role>India_Injection_Service_Technician_Haridwar</role>
+        </sharedTo>
+    </listViews>
+    <listViews>
+        <fullName>India_Assets</fullName>
+        <booleanFilter>1 OR 2</booleanFilter>
+        <columns>ASSET.NAME</columns>
+        <columns>ACCOUNT.NAME</columns>
+        <columns>Sales_Order_Number__c</columns>
+        <columns>Warranty_Labor_Expire__c</columns>
+        <columns>Tonnage_Description__c</columns>
+        <columns>Frame_Size__c</columns>
+        <columns>Service_Region__c</columns>
+        <columns>ASSET.INSTALL_DATE</columns>
+        <columns>PRODUCT2.NAME</columns>
+        <columns>Special_Warranty_Terms__c</columns>
+        <columns>Back_Order__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>Account_Business_Unit_Code__c</field>
+            <operation>equals</operation>
+            <value>300</value>
+        </filters>
+        <filters>
+            <field>ASSET.RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Asset.Machine</value>
+        </filters>
+        <label>India Assets</label>
+        <language>en_US</language>
+        <sharedTo>
+            <role>India_Injection_Domestic_Sales_Leader</role>
+            <role>India_Injection_Export_Sales_Leader</role>
+            <role>India_Injection_General_Mgr</role>
+            <role>India_Injection_Service_Leader</role>
+            <role>India_Injection_Service_Leader_CSD</role>
+        </sharedTo>
+    </listViews>
+    <recordTypeTrackFeedHistory>false</recordTypeTrackFeedHistory>
+    <recordTypeTrackHistory>false</recordTypeTrackHistory>
+    <recordTypes>
+        <fullName>Machine</fullName>
+        <active>true</active>
+        <compactLayoutAssignment>Global_Layout</compactLayoutAssignment>
+        <description>Machines owned by Accounts</description>
+        <label>Machine</label>
+        <picklistValues>
+            <picklist>Back_Order__c</picklist>
+            <values>
+                <fullName>Case %26 WO Created</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Technician</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Group__c</picklist>
+            <values>
+                <fullName>EXTRUSION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FERROMATIK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INJECTION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SEB AUXILIARY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SEB MACHINERY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNILOY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNKNOWN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Manufacturing_Process__c</picklist>
+            <values>
+                <fullName>F Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Decommissioned</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Installed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Obsolete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Registered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipped</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Relocated_Assets</fullName>
+        <active>true</active>
+        <description>This Record type used for Relocated Assets</description>
+        <label>Relocated Assets</label>
+        <picklistValues>
+            <picklist>Account_Currency__c</picklist>
+            <values>
+                <fullName>CNY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>EUR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JPY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>USD</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Back_Order__c</picklist>
+            <values>
+                <fullName>Case %26 WO Created</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>New</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>No Technician</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Business_Group__c</picklist>
+            <values>
+                <fullName>EXTRUSION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FERROMATIK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INJECTION</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SEB AUXILIARY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SEB MACHINERY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNILOY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNKNOWN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Manufacturing_Process__c</picklist>
+            <values>
+                <fullName>F Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>OEM__c</picklist>
+            <values>
+                <fullName>AMUT</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ARBURG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AUTOJECTORS</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>AUTOMATED ASSEMBLIES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BATTENFELD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>BUCHER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DAVIS STANDARD</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>DEMAG</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ENGEL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FANUC</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FARREL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>FERROMATIK</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HISHIYA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HPM</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>HUSKY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>INGERSOLL-RAND</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>JSW</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KLOCHNER WINDSOR</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KRAUSS-MAFFEI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>KRUPP</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>LAWTON MOLDING MACHINE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>MEIKI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NATCO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NESTAL</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NEWBURY</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NISSEI</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NISSIN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>NOKIA-MAILLEFER</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>RAINVILLE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>REED</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>ROCHESTER 500 TON</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SANDRETTO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>SANO</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>STOKES</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>TOSHIBA</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UBE</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>UNKNOWN</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>VAN DORN</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Installed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Obsolete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Registered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipped</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <recordTypes>
+        <fullName>Service_Vehicle</fullName>
+        <active>true</active>
+        <label>Service Vehicle</label>
+        <picklistValues>
+            <picklist>Manufacturing_Process__c</picklist>
+            <values>
+                <fullName>F Plan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Plan</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
+            <picklist>Status</picklist>
+            <values>
+                <fullName>Installed</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Obsolete</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Purchased</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Registered</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Shipped</fullName>
+                <default>false</default>
+            </values>
+        </picklistValues>
+    </recordTypes>
+    <searchLayouts>
+        <customTabListAdditionalFields>ASSET.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>PRODUCT2.NAME</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Billto__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Shipto__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Business_Group__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>ASSET.STATUS</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>ASSET.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ASSET.SERIAL_NUMBER</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ASSET.INSTALL_DATE</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>ACCOUNT.NAME</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>CONTACT.NAME</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ASSET.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ASSET.SERIAL_NUMBER</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ASSET.INSTALL_DATE</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>ACCOUNT.NAME</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>CONTACT.NAME</lookupPhoneDialogsAdditionalFields>
+        <searchFilterFields>Account_Business_Unit_Code__c</searchFilterFields>
+        <searchResultsAdditionalFields>ASSET.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Sales_Order_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Product_Name__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Control_Fanuc_Number__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Date_Shipped__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Shipto__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ACCOUNT.NAME</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ShipToStreet__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ShipToState__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>ASSET.INSTALL_DATE</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Cannot_Change_Asset_Name</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISCHANGED( Name ),
+NOT( $User.Id = &quot;0050L0000095iln&quot;), 
+NOT(
+OR($Profile.Name = &quot;FSL System Admin&quot;,
+$Profile.Name = &quot;System Administrator&quot;)
+)
+)</errorConditionFormula>
+        <errorDisplayField>Name</errorDisplayField>
+        <errorMessage>You cannot change the Installed Product ID. Contact your Administrator if the Installed Product ID needs to be corrected.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cannot_Change_External_ID</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND(
+ISCHANGED( EXTERNAL_ID__c ),
+NOT( $User.Id = &quot;0050L0000095iln&quot;),
+NOT(OR($Profile.Name  =  &quot;FSL System Admin&quot;,
+ $Profile.Name = &quot;System Administrator&quot;)))</errorConditionFormula>
+        <errorDisplayField>EXTERNAL_ID__c</errorDisplayField>
+        <errorMessage>You cannot change the External ID.  Contact your Administrator if the External ID needs to be corrected.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cannot_Change_Ship_or_Warranty_Dates</fullName>
+        <active>false</active>
+        <description>Prevents over-writing Dates when running Upserts from E1. Injection product requires manual updating of Dates based on warranty options. Only Admins can populate Warranty Terms (controlled by another Validation Rule).</description>
+        <errorConditionFormula>AND( 
+NOT( OR($User.Id = &quot;0050L0000095iln&quot;, 
+$User.Id = &quot;005E0000000VZG0&quot;)), 
+OR( 
+ISCHANGED( Date_Shipped__c ), 
+ISCHANGED ( Warranty_Start__c ), 
+ISCHANGED ( Warranty_Parts_Expire__c ), 
+ISCHANGED ( Warranty_Labor_Expire__c )), 
+Special_Warranty_Terms__c &lt;&gt; &quot;&quot; 
+)</errorConditionFormula>
+        <errorMessage>You cannot change the Ship Date or Warranty Dates. Contact your Administrator if these dates need to be corrected.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Cannot_Change_Warranty_Terms</fullName>
+        <active>true</active>
+        <description>Only System Administrators can populate Warranty Terms. Purpose is to prevent changes to Ship &amp; Warranty dates once Terms have been reviewed &amp; populated. If Date changes are required, delete Terms, change Dates &amp; re-populates Terms.</description>
+        <errorConditionFormula>AND(
+ISCHANGED(Special_Warranty_Terms__c),
+NOT(OR ( $User.Id =&quot;005E0000000VZG0&quot;,$User.Id = &quot;0050L0000095iln&quot;,$User.Id =&quot;005E0000007P9Ro&quot;)))</errorConditionFormula>
+        <errorDisplayField>Special_Warranty_Terms__c</errorDisplayField>
+        <errorMessage>You cannot change the Warranty Terms. Contact your Administrator or Service Manager if the terms need to be corrected.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>New_Assets_By_Admins_Only</fullName>
+        <active>true</active>
+        <errorConditionFormula>AND( 
+ISNEW(),
+NOT(
+OR($Profile.Name = &quot;FSL System Admin&quot;,
+$Profile.Name = &quot;System Administrator&quot;)
+)
+)</errorConditionFormula>
+        <errorMessage>You cannot add Assets. Please contact your Administrator to have Assets added.</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>SF_Automation_Cannot_Change_ShipTo</fullName>
+        <active>true</active>
+        <description>Prevent data load from changing ShipTo when Warranty Terms are populated.</description>
+        <errorConditionFormula>AND( 
+$User.Id = &quot;005E000000181s0&quot;, 
+ISCHANGED(Shipto__c), 
+Special_Warranty_Terms__c &lt;&gt; &quot;&quot; 
+)</errorConditionFormula>
+        <errorMessage>SF Automation Cannot Change ShipTo  when Warranty Terms are populated.</errorMessage>
+    </validationRules>
+    <webLinks>
+        <fullName>Create_PDS</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Create PDS</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/flow/Product_Data_Desktop?AssetId={!Asset.Id}&amp;UserId={!User.Id}&amp;AccountId={!Asset.AccountId}&amp;retURL=https://milacron--fulltest.lightning.force.com/lightning/o/Product_Data__c/list?filterName=Recent&amp;0.source=alohaHeader</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Work_Order_Summary</fullName>
+        <availability>online</availability>
+        <description>old button: /00OV0000000KW8L?pv0={!Asset.Id}
+another old button: /00OV0000000KZtt?pv0={!Asset.Id}</description>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Work Order Summary</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>/00O0L000003aEmd?pv0={!Asset.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Work_Order_Summary_Lightning</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Work Order Summary</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://milacron.lightning.force.com/lightning/r/Report/00O0L000003aEmd/view?fv0={!Asset.Id}</url>
+    </webLinks>
+    <webLinks>
+        <fullName>Work_Order_Summary_Lightning_Report</fullName>
+        <availability>online</availability>
+        <displayType>link</displayType>
+        <encodingKey>UTF-8</encodingKey>
+        <hasMenubar>false</hasMenubar>
+        <hasScrollbars>true</hasScrollbars>
+        <hasToolbar>false</hasToolbar>
+        <height>600</height>
+        <isResizable>true</isResizable>
+        <linkType>url</linkType>
+        <masterLabel>Work Order Summary</masterLabel>
+        <openType>newWindow</openType>
+        <position>none</position>
+        <protected>false</protected>
+        <showsLocation>false</showsLocation>
+        <showsStatus>false</showsStatus>
+        <url>https://milacron.lightning.force.com/lightning/r/Report/00O0L000003aEmd/view?fv0={!Asset.Id}</url>
+    </webLinks>
+</CustomObject>

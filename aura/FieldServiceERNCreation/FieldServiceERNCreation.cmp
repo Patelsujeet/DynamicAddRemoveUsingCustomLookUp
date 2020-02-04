@@ -1,0 +1,440 @@
+<!-- FieldServiceERNCreation -->
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId" access="global" controller="FieldServiceERNCreation">
+    
+    <ltng:require styles="{!$Resource.Model_Width_Expand + '/model.css'}"/>    
+    <aura:handler name="cancelComponent" event="c:selectedsObjectRecordEvent" action="{!c.cancelAddComponent}"/>
+    
+    
+    <aura:attribute name="mulitpleAsset" type="boolean" default="false"/>
+    
+    <aura:attribute name="selectionsContainsRetrofit" type="boolean" default="false"/>
+	<aura:attribute name="BeforeJan2007Checking" type="boolean" default="false"/>    
+    
+    
+    <aura:attribute name="recordId" type="Id" />
+    <aura:attribute name="Asset" type="Asset" />
+    <aura:attribute name="labels" type="Map" />
+    <aura:attribute name="CategoryList" type="List" default="[]" description="Category Picklist Values"/>
+    <aura:attribute name="options" type="List" default="[{'label': 'Yes', 'value': 'Yes'},{'label': 'No', 'value': 'No'},]"/>
+    <aura:attribute name="selectedCategoryList" type="List" default="[]" description="Selected Category Picklist Values"/>
+    <aura:attribute name="selectionContainsCore" type="Boolean" default="False"/>
+    <aura:attribute name="selectionContainsMGO" type="Boolean" default="False"/>
+    <aura:attribute name="selectionContainsAirEje" type="Boolean" default="False"/>
+    <aura:attribute name="selectionContainsSoftware" type="Boolean" default="False"/>
+    <aura:attribute name="BeforeJan2007" type="Boolean" default = "False"/>
+    <aura:attribute name="CreateERNCheck" type="Boolean" default = "False"/>
+    <aura:attribute name="ERNCreated" type="Boolean" default = "false"/> <!--added By sujeet-->
+    <aura:attribute name="newERN" type="ERN__c"
+                    default = "{ 'sobjectType' : 'ERN__c',
+                               'Name' : 'Service',
+                               'Category__c' : '',
+                               'Request_Description__c' : '',
+                               'Region__c' : ''}"/>
+    
+    <aura:attribute name="EligibleForMultipleERN" type="Boolean" description="Eligible For Multiple ERNs Based on Category Selected."/>
+    <aura:attribute name="HaveERNAssetsToAdd" type="Boolean"/>
+    <aura:attribute name="Files" type = "ContentDocument[]"/>
+    <!--Aura Attribute for store ERNAsset Object List as Array-->   
+    <aura:attribute name="ERNAssetList" type="ERN_Assets__c[]"/> 
+    <aura:attribute name="AddedERNAssetList" type="ERN_Assets__c[]"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <!-- create 2 aura handler with waiting and donewaiting events--> 
+    <aura:handler event="aura:waiting" action="{!c.showSpinner}"/>
+    <aura:handler event="aura:doneWaiting" action="{!c.hideSpinner}"/>
+    <!--create a component attributs -->
+    <aura:attribute name="Spinner" type="boolean" default="false"/>
+    
+    <!--Event handler for Add and Delete Row Event which is execute from Child Component-->
+    <!--<aura:handler name="DeleteRowEvent" event="c:DeleteRowEvent" action="{!c.removeDeletedRow}"/>-->
+    <!--<aura:handler name="AddRowEvent" event="c:AddRowEvent" action="{!c.addRow}"/>-->
+    <!--<aura:handler name="DeleteEARow" event="c:DeleteEARow" action="{!c.deleteEARow}"/>-->
+    <!--<aura:handler name="SaveEARow" event="c:SaveEARow" action="{!c.saveEARow}"/>-->
+    
+    <!--Close Attribute-->
+    <aura:attribute name="isOpen" type="boolean" default="true"/>
+    
+    <aura:if isTrue="{!v.isOpen}">
+    <!--<div class="slds-modal slds-fade-in-open slds-modal_large">-->
+        <div class="slds-modal__container"> 
+            <div class="slds-scrollable">
+                
+                <aura:if isTrue="{!v.Spinner}">
+                    <div aura:id="spinnerId" class="slds-spinner_container">
+                        <div class="slds-spinner--brand  slds-spinner slds-spinner--large slds-is-relative" role="alert">
+                            <span class="slds-assistive-text">Loading</span>
+                            <div class="slds-spinner__dot-a"></div>
+                            <div class="slds-spinner__dot-b"></div>
+                        </div>
+                    </div>
+                </aura:if>
+                
+                
+                
+                <!-- PAGE HEADER -->
+                <lightning:layout class="slds-page-header slds-page-header--object-home">
+                    <lightning:layoutItem>
+                        <lightning:icon iconName="custom:custom100" alternativeText="ERNs"/>
+                    </lightning:layoutItem>
+                    <lightning:layoutItem padding="horizontal-small">
+                        <div class="page-section page-header">
+                            <h1 class="slds-text-heading--label">ERNs</h1>
+                            <h2 class="slds-text-heading--medium">New Service ERN</h2>
+                        </div>
+                    </lightning:layoutItem>
+                </lightning:layout>
+                
+                <!-- / PAGE HEADER -->
+                <div class="slds-modal__content slds-p-around_medium slds-p-top_x-small" id="modal-content-id-1">
+                    <aura:if isTrue = "{!v.ERNCreated == False}">
+                        <div class="slds-p-around--none slds-panel__section">
+                            
+                            <div class="slds-section slds-is-open">
+                                
+                                <div class="slds-grid slds-grid slds-wrap slds-grid--pull-padded">
+                                    <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                            <label class="slds-form-element__label"> Account </label>
+                                            <div class="slds-form-element__control" style="min-height: 18px;">
+                                                <ui:outputText class="slds-output" value="{!v.Asset.Account.Name}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                            <label class="slds-form-element__label"> {!v.labels.name} </label>
+                                            <div class="slds-form-element__control" style="min-height: 18px;">
+                                                <ui:outputText class="slds-output" value="{!v.Asset.Name}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                            <label class="slds-form-element__label"> {!v.labels.sales_order_number__c} </label>
+                                            <div class="slds-form-element__control" style="min-height: 18px;">
+                                                <ui:outputText class="slds-output" value="{!v.Asset.Sales_Order_Number__c}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                            <label class="slds-form-element__label"> Shipped Date </label>
+                                            <div class="slds-form-element__control" style="min-height: 18px;">
+                                                <ui:outputText class="slds-output" value="{!v.Asset.Date_Shipped__c}" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                            <label class="slds-form-element__label"> Tonnage Description </label>
+                                            <div class="slds-form-element__control" style="min-height: 18px;">
+                                                <ui:outputText class="slds-output" value="{!v.Asset.Tonnage_Description__c}" />
+                                            </div>
+                                        </div>
+                                    </div>      
+                                    <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                            <label class="slds-form-element__label"> Frame Size </label>
+                                            <div class="slds-form-element__control" style="min-height: 18px;">
+                                                <ui:outputText class="slds-output" value="{!v.Asset.Frame_Size__c}" />
+                                            </div>
+                                        </div>
+                                    </div>  
+                                    <div class="slds-p-horizontal--small slds-size--1-of-1">
+                                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                            <!--<ui:inputSelect  label="Region" aura:id="ERNRegions" class="slds-select" required = "true" value="{!v.newERN.Region__c}"/>-->
+                                        </div>
+                                    </div>
+                                    <div class="slds-p-horizontal--small slds-size--1-of-1">
+                                        
+                                        <lightning:dualListbox class="slds-scrollable" style="height: 20rem; width: 35rem;"
+                                                               aura:id="selectCategory"
+                                                               name="Category"
+                                                               label="Select Category"
+                                                               sourceLabel="Available Category"
+                                                               selectedLabel="Selected Category"
+                                                               options="{!v.CategoryList }"
+                                                               value="{!v.newERN.Category__c}"
+                                                               onchange="{!c.handleCategoryChange}"
+                                                               required = "true"/>
+                                        
+                                    </div>
+                    <!--Retrofit Selection Start-->  
+                                    
+                                    <aura:if isTrue="{!v.selectionsContainsRetrofit}">
+                                        <aura:if isTrue="{!v.BeforeJan2007Checking}">
+                                    	<div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Text" 
+                                                                 label = "Electrical Circuit Number"
+                                                                 name = "ElectricalCircuitNumber"
+                                                                 value = "{!v.newERN.Electrical_Circuit_Number__c}"
+                                                                 required = "true"
+                                                                 aura:id = "ElectricalCircuitNumber"
+                                                                 messageWhenValueMissing="Enter Data"/>
+                                                
+                                            </div>
+                                        </div>
+                                        
+                                         <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Text" 
+                                                                 label = "Hydraulic Circuit Number"
+                                                                 name = "HydraulicCircuitNumber"
+                                                                 value = "{!v.newERN.Hydraulic_Circuit_Number__c}"
+                                                                 required = "true"
+                                                                 aura:id = "HydraulicCircuitNumber"
+                                                                 messageWhenValueMissing="Enter Data"/>
+                                                
+                                            </div>
+                                        </div>
+                                        </aura:if>
+                                         <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Text" 
+                                                                 label = "Existing Control"
+                                                                 name = "ExistingControl"
+                                                                 value = "{!v.newERN.Existing_Control__c}"
+                                                                 required = "true"
+                                                                 aura:id = "ExistingControl"
+                                                                 messageWhenValueMissing="Enter Data"/>
+                                                
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                      <!--Retrofit Selection Close-->          
+                                    <aura:if isTrue = "{!v.selectionContainsCore}">
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Number" 
+                                                                 label = "Existing Core:"
+                                                                 name = "ExistingCore"
+                                                                 value = "{!v.newERN.Existing_Core__c}"
+                                                                 min = "0"
+                                                                 required = "true"
+                                                                 aura:id = "ExistingCore"/>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                <lightning:input type = "Number" 
+                                                                 label = "Required Additional Core:"
+                                                                 name = "AdditionalCore"
+                                                                 value = "{!v.newERN.Required_Additional_Core__c}"
+                                                                 min = "1"
+                                                                 required = "true"
+                                                                 aura:id = "AdditionalCore"/>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue = "{!v.selectionContainsMGO}">
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Number" 
+                                                                 label = "Existing MGO:"
+                                                                 name = "ExistingMGO"
+                                                                 value = "{!v.newERN.Existing_MGO__c}"
+                                                                 min = "0"
+                                                                 required = "true"
+                                                                 aura:id = "ExistingMGO"/>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                <lightning:input type = "Number" 
+                                                                 label = "Required Additional MGO:"
+                                                                 name = "AdditionalMGO"
+                                                                 value = "{!v.newERN.Required_Additional_MGO__c}"
+                                                                 min = "1"
+                                                                 required = "true"
+                                                                 aura:id = "AdditionalMGO"/>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue = "{!v.selectionContainsAirEje}">
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Number" 
+                                                                 label = "Existing Air Ejection:"
+                                                                 name = "ExistingAirEjection"
+                                                                 value = "{!v.newERN.Existing_Air_Ejection__c}"
+                                                                 min = "0"
+                                                                 required = "true"
+                                                                 aura:id = "ExistingAirEjection"/>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                <lightning:input type = "Number" 
+                                                                 label = "Required Additional Air Ejection:"
+                                                                 name = "AdditionalAirEjection"
+                                                                 value = "{!v.newERN.Required_Additional_Air_Ejection__c}"
+                                                                 min = "1"
+                                                                 required = "true"
+                                                                 aura:id = "AdditionalAirEjection"/>
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <!--<aura:if isTrue = "{!v.BeforeJan2007}">-->
+                                    <aura:if isTrue = "{!v.selectionContainsSoftware}">
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Text" 
+                                                                 label = "Enter Software Version"
+                                                                 name = "SoftwareVersion"
+                                                                 value = "{!v.newERN.Software_Version__c}"
+                                                                 required = "true"
+                                                                 aura:id = "Software"/>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Text" 
+                                                                 label = "Control Rack Details"
+                                                                 name = "ControlRackDetails"
+                                                                 value = "{!v.newERN.Control_Rack_Details__c}"
+                                                                 required = "true"
+                                                                 aura:id = "ControlRack"/>
+                                                
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue = "{!v.BeforeJan2007}">
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Text" 
+                                                                 label = "Electrical Circuit Number"
+                                                                 name = "ElectricalCircuitNumber"
+                                                                 value = "{!v.newERN.Electrical_Circuit_Number__c}"
+                                                                 required = "true"
+                                                                 aura:id = "ElectricalCircuitNumber"/>
+                                                
+                                            </div>
+                                        </div>
+                                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                
+                                                <lightning:input type = "Text" 
+                                                                 label = "Hydraulic Circuit Number"
+                                                                 name = "HydraulicCircuitNumber"
+                                                                 value = "{!v.newERN.Hydraulic_Circuit_Number__c}"
+                                                                 required = "true"
+                                                                 aura:id = "HydraulicCircuitNumber"/>
+                                                
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue = "{!v.CreateERNCheck == False}">
+                                        <div class="slds-p-horizontal--small slds-size--1-of-1" aura:id = "NextId">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                <lightning:button class="slds-button slds-button_brand" variant="brand" label="Next" onclick="{!c.CheckCriteriaAndValidations}" />
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    <aura:if isTrue = "{!v.CreateERNCheck}">
+                                        <div class="slds-p-horizontal--small slds-size--1-of-1">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                <lightning:textarea name="RequestDescrption" label="Request Description" placeholder="type here..." 
+                                                                    value = "{!v.newERN.Request_Description__c}" required = "true" aura:id="RequestDescrption"/>
+                                            </div>
+                                        </div>
+                                        <div class="slds-p-horizontal--small slds-size--1-of-1">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                <lightning:textarea name="MachineModification/Remarks" label="Machine Modifications in Field/Remarks" placeholder="type here..." 
+                                                                    value = "{!v.newERN.Machine_Modifications_in_Field_Remarks__c}" required = "true" aura:id="MachineModification"/>
+                                            </div>
+                                        </div>
+                                        <aura:if isTrue = "{!v.EligibleForMultipleERN}" >
+                                            <div class="slds-p-horizontal--small slds-size--1-of-1">
+                                                <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                    <lightning:radioGroup name="HasMultipleERN"
+                                                                          label="Do you want to add multiple Asset with this ERN?"
+                                                                          aura:id = "WantMultipleERN"
+                                                                          options="{!v.options}"
+                                                                          value="{! v.newERN.ERN_For_Multiple_Assets__c }"
+                                                                          required="true"/>
+                                                </div>
+                                            </div>
+                                        </aura:if>
+                                        <div class="slds-p-horizontal--small slds-size--1-of-1" >
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                                <lightning:button class="slds-button slds-button_brand" variant="brand" label="Save and Submit" onclick="{!c.CreateNewERN}" />
+                                            </div>
+                                        </div>
+                                    </aura:if>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </aura:if>
+                    <!--File Upload-->
+                    <aura:if isTrue = "{!v.ERNCreated}">
+                        <lightning:fileUpload label="Attach Files"
+                                              name="fileUploader"
+                                              multiple="true"
+                                              
+                                              recordId="{!v.newERN.Id}"
+                                              onuploadfinished="{!c.handleUploadFinished}" />
+                        <aura:if isTrue = "{!not(empty(v.Files))}">
+                            
+                            <table>
+                                <tr>
+                                    <th> Document Name </th>
+                                </tr><br/>        
+                                <aura:iteration items = "{!v.Files}" var="file">
+                                    <div class="slds-p-horizontal--small slds-size--1-of-1" >
+                                        <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                            <tr>
+                                                <td>{!file.Title}</td>
+                                                <td>
+                                                    <button class="slds-button slds-button_icon" title="Delete" onclick="{!c.DeleteAction}" id="{!file.Id}">
+                                                        <lightning:icon iconName="action:delete" size="x-small"/>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </div>
+                                    </div>
+                                </aura:iteration>
+                                
+                            </table>
+                        </aura:if>
+                        <br/>
+                        
+                        <div class="slds-p-horizontal--small slds-size--1-of-2">
+                                            <div class="slds-form-element slds-hint-parent slds-has-divider--bottom slds-p-around--x-small hasDiv">
+                                    <lightning:button class="slds-button slds-button_brand" variant="brand" label="Finish" onclick="{!c.FinishAction}" />
+                                                <!--This code is addes by sujeet-->
+									<lightning:button class="slds-button slds-button_brand" variant="brand" label="Add Assets" onclick="{!c.AddAsset}" />                                                
+                                </div>
+                        </div>
+                        
+                    </aura:if>
+                    <!--File Upload-->
+                    
+                    <!--Add Multiple Asset-->
+                    <aura:if isTrue = "{!v.mulitpleAsset}">     
+                        <c:AddMultipleAsset ern_id="{!v.newERN.Id}"/>
+                    </aura:if>
+                    <div align = "right">
+                    	<lightning:button class="slds-button slds-button_brand" variant="brand" label="Cancel" onclick="{!c.CancelAction}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+   </aura:if>     
+    
+</aura:component>

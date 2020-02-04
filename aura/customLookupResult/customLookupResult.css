@@ -1,0 +1,8 @@
+.THIS .optionTitle{
+        max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    margin-bottom: 0.125rem;
+}

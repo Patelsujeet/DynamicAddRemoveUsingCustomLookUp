@@ -1,0 +1,69 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" controller="FieldServiceERNCreation">
+    
+    <ltng:require styles="{!$Resource.Model_Width_Expand1 + '/model.css'}"/> 
+    <aura:registerEvent name="cancelComponent" type="c:selectedsObjectRecordEvent"/>
+    
+    <aura:attribute name="ern_asset_List" type="List"/> 
+    <aura:attribute name="temp" type="Integer" default="0"/> 
+    
+    <aura:attribute name="ern_asset_Insert" type="List"/>
+    <aura:attribute name="isPopUp" type="boolean" default="false"/>
+    
+    <aura:attribute name="ern_id" type="string"/>
+    <aura:attribute name="ern_To_Upload_File" type="List" />
+    
+    <aura:attribute name="showToast" type="boolean" default="false"/>
+    <aura:attribute name="message" type="String"/>
+    <aura:attribute name="toastType" type="String"/>
+    
+            
+        <!--External Component-->
+        <aura:if isTrue="{!v.showToast}">
+            <c:CustomToast messageName="{!v.message}" toastType="{!v.toastType}"/>		
+        </aura:if>
+    
+   
+    
+    
+    <div class="slds-box" style="box-shadow:0 2px 4px 0 rgba(0, 0, 0, 0.40)">
+        <div class="slds-float_right slds-p-bottom_small">
+            <div class="slds-grid slds-gutters">
+                <div class="slds-col">
+                    <span>
+                        <lightning:button iconName="utility:add" label="Add"  variant="success" onclick="{!c.addRow}"/>
+                    </span>
+                </div>
+                <!--<div class="slds-col">
+                    <span>
+                        <lightning:button iconName="utility:close" label="Remove" variant="destructive" onclick="{!c.deleteRow}"/>            
+                    </span>
+                </div>-->
+            </div>
+        </div> 
+        <div class="container-fluid">        
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer" id="dynamicCmp"> 
+                <tbody>      
+                    <aura:iteration items="{!v.ern_asset_List}" var="acc" indexVar="index">
+                        <tr>
+                            <td id="{!'ern_asset'+index}">
+                                <c:customLookup IconName="standard:product" aura:id="{!index}" selectedRecord="{!v.selectedLookUpRecord}" label="Assset Name" index="{!index}" ern_Id="{!v.ern_id}"/>
+                            </td>
+                        </tr>   
+                    </aura:iteration>
+                </tbody>
+            </table>
+            <div class="slds-align_absolute-center slds-p-top_small">
+                <lightning:button variant="brand" label="Submit" title="Brand action" onclick="{!c.save}" />
+                <lightning:button variant="brand" label="Cancel" title="Brand action" onclick="{!c.Cancel}" />
+            </div>
+        </div>
+    </div>
+    
+    <!--File Upload Work-->    
+    <!-- Model Pop Up-->
+    <aura:if isTrue="{!v.isPopUp}">
+        <c:ERNAssetWithFile ern_asset_List="{!v.ern_To_Upload_File}" ern_Id="{!v.ern_id}"/>
+    </aura:if>  
+    
+    
+</aura:component>
